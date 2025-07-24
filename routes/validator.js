@@ -1,6 +1,14 @@
 const express = require("express");
 const router = express.Router();
 
+const validKeys = [
+    "X-12B",
+    "M-22B",
+    "A-1MC",
+    "B-77T",
+    "X-Y4V"
+];
+
 router.get("/", (_req, res) => {
     res.json({
         message: "API Index"
@@ -17,6 +25,14 @@ router.get("/validator", (req, res) => {
             .json({
                 error: "Missing API_KEY in headers."
             });
+    }
+
+    if (!validKeys.includes(apiKey)) {
+        return res
+            .status(401)
+            .json({
+                error: "Invalid API_KEY"
+            })
     }
     
     res.json({
