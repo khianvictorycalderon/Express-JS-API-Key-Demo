@@ -52,6 +52,7 @@ router.post("/validator", (req, res) => {
     return res
         .status(200)
         .json({
+            disclaimer: "All user data in this file is entirely fictional and created for educational or testing purposes only. Any resemblance to real persons, living or dead, is purely coincidental.",
             message: "User found",
             user_data
         })
