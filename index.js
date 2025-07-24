@@ -9,7 +9,7 @@ app.use(cors());
 
 app.get("/", (_req, res) => {
     res.json({
-        message: "Index page"
+        message: "Index"
     })
 })
 
