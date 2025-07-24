@@ -1,7 +1,8 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const PORT = 3000;
+require("dotenv").config();
+const PORT = process.env.PORT || 3000;
 
 // Middlewares
 app.use(cors());
@@ -11,5 +12,5 @@ app.get("/", (req, res) => {
 })
 
 app.listen(PORT, () => {
-    console.log(`Running at http:localhost:${PORT}`);
+    console.log(`Running at http://localhost:${PORT}`);
 })
