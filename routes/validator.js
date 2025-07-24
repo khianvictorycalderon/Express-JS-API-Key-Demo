@@ -1,13 +1,6 @@
 const express = require("express");
 const router = express.Router();
-
-const validKeys = [
-    "X-12B",
-    "M-22B",
-    "A-1MC",
-    "B-77T",
-    "X-Y4V"
-];
+const validKeys = require("./api_keys");
 
 router.get("/", (_req, res) => {
     res.json({
