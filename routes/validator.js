@@ -9,8 +9,19 @@ router.get("/", (_req, res) => {
     })
 });
 
-router.get("/validator", (req, res) => {
+router.get("/validator", (_req, res) => {
+    res.json({
+        message: "Validator"
+    });
+})
+
+router.post("/validator", (req, res) => {
+
+    // Retrieve valid API keys
     const apiKey = req.header("API_KEY");
+
+    // Retrieve all existing user ids
+    const ids = userList.map(item => item.id);
     const { id } = req.body;
 
     if (!apiKey) {
@@ -28,10 +39,23 @@ router.get("/validator", (req, res) => {
                 error: "Invalid API_KEY"
             })
     }
-    
-    res.json({
-        message: "Validator"
-    })
+
+    if (!ids.includes(id)) {
+        return res
+            .status(404)
+            .json({
+                error: "User ID not found."
+            })
+    }
+
+    const user_data = userList.find(user => user.id === id);
+    return res
+        .status(200)
+        .json({
+            message: "User found",
+            user_data
+        })
+
 });
 
 module.exports = router;
