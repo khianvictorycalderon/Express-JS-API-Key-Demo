@@ -7,8 +7,10 @@ const PORT = process.env.PORT || 3000;
 // Middlewares
 app.use(cors());
 
-app.get("/", (req, res) => {
-    res.send("Hello World");
+app.get("/", (_req, res) => {
+    res.json({
+        message: "Index page"
+    })
 })
 
 app.listen(PORT, () => {
