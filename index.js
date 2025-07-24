@@ -13,6 +13,8 @@ app.get("/", (_req, res) => {
     })
 })
 
+app.use("/api", require("./routes/validator"));
+
 app.listen(PORT, () => {
     console.log(`Running at http://localhost:${PORT}`);
 })
